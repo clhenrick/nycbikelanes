@@ -25,7 +25,7 @@ osm_bikelanes: clean_osm
 	unzip $(osmdir)/osm.zip -d $(osmdir)
 	
 	@echo "Filtering and clipping"
-	ogr2ogr -clipsrc data/boroughs/dissolved.shp -simplify 0.2 -t_srs EPSG:4326 $(osmdir)/lines.shp $(osmdir)/*line.shp -where $(bicyclewhere)
+	ogr2ogr -clipsrc data/boroughs/dissolved.shp -t_srs EPSG:4326 $(osmdir)/lines.shp $(osmdir)/*line.shp -where $(bicyclewhere)
 	
 	@echo "Deleting original files"
 	rm $(osmdir)/new-york_new-york.osm-*
